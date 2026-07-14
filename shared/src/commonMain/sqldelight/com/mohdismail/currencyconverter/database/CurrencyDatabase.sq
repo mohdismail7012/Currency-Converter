@@ -1,0 +1,31 @@
+CREATE TABLE CurrencyRate (
+
+    fromCurrency TEXT NOT NULL,
+
+    toCurrency TEXT NOT NULL,
+
+    conversionRate REAL NOT NULL,
+
+    lastUpdated TEXT NOT NULL,
+
+    PRIMARY KEY(fromCurrency, toCurrency)
+
+);
+
+insertRate:
+INSERT OR REPLACE INTO CurrencyRate(
+    fromCurrency,
+    toCurrency,
+    conversionRate,
+    lastUpdated
+)
+VALUES (?, ?, ?, ?);
+
+getRate:
+SELECT *
+FROM CurrencyRate
+WHERE fromCurrency = ?
+AND toCurrency = ?;
+
+deleteAllRates:
+DELETE FROM CurrencyRate;
