@@ -172,11 +172,18 @@ class CurrencyViewModel : ViewModel() {
                 _currencies.value = list
 
             } catch (e: Exception) {
+
                 e.printStackTrace()
 
                 _result.value = "Currency Error:\n${e.message}"
 
-                println("Currency API Error = ${e.message}")
+                println("====================================")
+                println("Currency API Error")
+                println("Message = ${e.message}")
+                println("Exception = ${e}")
+                println("Class = ${e::class.simpleName}")
+                println("====================================")
+
             }
 
         }
