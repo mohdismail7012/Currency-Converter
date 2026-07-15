@@ -14,7 +14,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.mohdismail.currencyconverter.ui.components.ConvertButton
 import com.mohdismail.currencyconverter.ui.components.CurrencyPickerDialog
 import com.mohdismail.currencyconverter.ui.components.ResultCard
@@ -55,8 +54,9 @@ fun HomeScreen(
         mutableStateOf(true)
     }
 
-    val viewModel: CurrencyViewModel = viewModel()
-
+    val viewModel = remember {
+        CurrencyViewModel()
+    }
     val result by viewModel.result.collectAsState()
 
     val favorites by viewModel.favorites.collectAsState()

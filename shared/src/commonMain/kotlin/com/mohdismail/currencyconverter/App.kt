@@ -6,13 +6,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.mohdismail.currencyconverter.theme.CurrencyConverterTheme
+import com.mohdismail.currencyconverter.theme.ThemeManager
+import com.mohdismail.currencyconverter.ui.screens.HomeScreen
 
 @Composable
 fun App() {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+    CurrencyConverterTheme(
+        darkTheme = ThemeManager.isDarkTheme
     ) {
-        Text("Hello iOS")
+        HomeScreen()
     }
 }
