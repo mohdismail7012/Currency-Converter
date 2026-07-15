@@ -1,0 +1,17 @@
+workflows:
+  ios-build:
+    name: iOS Build
+    environment:
+      xcode: latest
+      java: 17
+
+    scripts:
+      - name: Make Gradle executable
+        script: chmod +x ./gradlew
+
+      - name: Build shared framework
+        script: ./gradlew :shared:assemble
+
+    artifacts:
+      - build/**/*
+      - shared/build/**/*
