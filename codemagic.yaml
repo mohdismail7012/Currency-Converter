@@ -1,17 +1,23 @@
 workflows:
-  ios-build:
-    name: iOS Build
+  ios-app:
+    name: Build iOS App
+
     environment:
       xcode: latest
       java: 17
 
     scripts:
       - name: Make Gradle executable
-        script: chmod +x ./gradlew
+        script: chmod +x gradlew
 
-      - name: Build shared framework
-        script: ./gradlew :shared:assemble --no-daemon --stacktrace
+      - name: Build iOS Application
+        script: |
+          xcodebuild \
+            -project iosApp/iosApp.xcodeproj \
+            -scheme iosApp \
+            -configuration Debug \
+            -sdk iphonesimulator \
+            -derivedDataPath build
 
     artifacts:
-      - build/**/*
-      - shared/build/**/*
+      - build/**/*.app
