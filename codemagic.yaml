@@ -10,7 +10,7 @@ workflows:
         script: chmod +x ./gradlew
 
       - name: Build shared framework
-        script: ./gradlew :shared:assemble
+        script: ./gradlew :shared:assemble --no-daemon --stacktrace
 
     artifacts:
       - build/**/*
